@@ -4,6 +4,7 @@ from random import randint
 from router import Router
 
 def main():
+    # Add IP's that you want to connect to as strings
     ip_list = []
     routers = []
 

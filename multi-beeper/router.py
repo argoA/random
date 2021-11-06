@@ -26,24 +26,23 @@ class Router():
 
         # Chance at a double beep
         chance = randint(1,100)
-        self.send_log()
-
         if chance >= 90:
             self.double_beep = True
 
             self.beep(frequency)
             sleep(0.25)
             self.beep(frequency)
-
-            self.double_beep = False
         else:
             self.beep(frequency)
+
+        self.send_log()
+        self.double_beep = False
 
     def beep(self, frequency):
         self.api.get_binary_resource('/').call('beep', {'frequency': frequency.encode()})  
 
     def send_log(self):
-        if self.double_beep = True:
+        if self.double_beep == True:
             self.api.get_binary_resouce('/').call('log/info', { 'message': self.double_beep_message.encode() })
 
         self.api.get_binary_resource('/').call('log/info', { 'message': self.beep_freq_message.encode() })
